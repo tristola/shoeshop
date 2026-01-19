@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client/react";
 import { GET_CART, ADD_TO_CART, REMOVE_FROM_CART } from "@/lib/queries";
 import { v4 as uuidv4 } from 'uuid';
 import { FALLBACK_IMAGES } from '@/lib/constants';
