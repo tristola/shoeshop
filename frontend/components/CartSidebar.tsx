@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 import Image from "next/image";
 
 export function CartSidebar() {
@@ -28,7 +29,8 @@ export function CartSidebar() {
           <h2 className="text-xl font-bold uppercase tracking-widest">{t('cart.title')}</h2>
           <button
             onClick={toggleCart}
-            className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+            aria-label={t('cart.close')}
+            className="rounded-full p-3 text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground min-h-[44px] min-w-[44px] flex items-center justify-center bg-transparent"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,6 +38,7 @@ export function CartSidebar() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
+              aria-hidden="true"
               className="h-6 w-6"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -89,7 +92,8 @@ export function CartSidebar() {
                       </div>
                       <button
                         onClick={() => item.key && removeFromCart(item.key)}
-                        className="text-xs font-medium text-red-400 hover:text-red-300 transition-colors"
+                        className="text-xs font-medium text-red-400 hover:text-red-300 transition-colors px-2 py-2 -mr-2"
+                        aria-label={`${t('cart.remove')} ${item.title}`}
                       >
                         {t('cart.remove')}
                       </button>
@@ -105,11 +109,15 @@ export function CartSidebar() {
           <div className="border-t border-white/10 bg-white/5 p-6 backdrop-blur-xl">
             <div className="mb-4 flex items-center justify-between text-lg font-bold">
               <span>{t('cart.total')}</span>
-              <span>${cartTotal.toFixed(2)}</span>
+              <span>{cartTotal}</span>
             </div>
-            <button className="w-full rounded-xl bg-primary py-4 font-bold text-primary-foreground transition-transform hover:scale-[1.02] hover:bg-accent hover:shadow-lg active:scale-95">
+            <Link 
+              href="/checkout" 
+              onClick={toggleCart}
+              className="block w-full rounded-xl bg-primary py-4 text-center font-bold text-primary-foreground transition-transform hover:scale-[1.02] hover:bg-accent hover:shadow-lg active:scale-95"
+            >
               {t('cart.checkout')}
-            </button>
+            </Link>
           </div>
         )}
       </div>

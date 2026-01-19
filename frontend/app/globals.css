@@ -37,3 +37,13 @@ body {
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+@keyframes text-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.animate-text-shine {
+  background-size: 250% auto;
+  animation: text-shine 6s linear infinite;
+}

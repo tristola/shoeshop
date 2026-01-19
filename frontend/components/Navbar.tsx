@@ -3,6 +3,7 @@
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import Link from "next/link";
 
 export function Navbar() {
   const { toggleCart, cart } = useCart();
@@ -17,15 +18,9 @@ export function Navbar() {
             SHOE<span className="text-primary">SHOP</span>
           </a>
           <div className="hidden md:flex md:gap-6">
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Men
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Women
-            </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              New Arrivals
-            </a>
+            <Link href="/posts" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              {t('nav.news')}
+            </Link>
           </div>
         </div>
 
@@ -33,7 +28,8 @@ export function Navbar() {
           <LanguageSwitcher />
           <button
             onClick={toggleCart}
-            className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10"
+            aria-label={t('nav.cart')}
+            className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10 min-h-[44px]"
           >
             <span>{t('nav.cart')}</span>
             <div className="relative">
@@ -42,6 +38,7 @@ export function Navbar() {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"

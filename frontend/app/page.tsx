@@ -16,6 +16,11 @@ const GET_PRODUCTS = gql`
         image {
           sourceUrl
         }
+        productCategories {
+          nodes {
+            name
+          }
+        }
         ... on SimpleProduct {
           price
         }
