@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function CartSidebar() {
-  const { isOpen, toggleCart, cart, removeFromCart, cartTotal } = useCart();
+  const { isOpen, toggleCart, cart, removeFromCart, cartTotal, checkoutUrl } = useCart();
   const { t } = useLanguage();
 
   return (
@@ -111,13 +111,15 @@ export function CartSidebar() {
               <span>{t('cart.total')}</span>
               <span>{cartTotal}</span>
             </div>
-            <Link 
-              href="/checkout" 
-              onClick={toggleCart}
+            <button 
+              onClick={() => {
+                const target = checkoutUrl || "/checkout";
+                window.location.href = target;
+              }}
               className="block w-full rounded-xl bg-primary py-4 text-center font-bold text-primary-foreground transition-transform hover:scale-[1.02] hover:bg-accent hover:shadow-lg active:scale-95"
             >
               {t('cart.checkout')}
-            </Link>
+            </button>
           </div>
         )}
       </div>

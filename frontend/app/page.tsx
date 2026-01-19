@@ -32,9 +32,17 @@ const GET_PRODUCTS = gql`
   }
 `;
 
+import { MOCK_PRODUCTS } from "@/lib/mock-data";
+
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
+  const isMockMode = process.env.NEXT_PUBLIC_USE_MOCK_DATA === "true";
+  
+  if (isMockMode) {
+    return <HomeContent products={MOCK_PRODUCTS} />;
+  }
+
   let products = [];
   try {
     const client = getClient();

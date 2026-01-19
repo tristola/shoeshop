@@ -33,13 +33,16 @@ export function HomeContent({ products }: { products: any[] }) {
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
-          <h1 className="animate-text-shine mb-4 bg-gradient-to-r from-[#38bdf8] via-[#f472b6] via-white via-[#f472b6] to-[#38bdf8] bg-clip-text text-5xl font-extrabold text-transparent sm:text-7xl md:text-8xl leading-none">
+          <h1 className="animate-text-shine mb-4 bg-gradient-to-r from-[#38bdf8] via-[#a855f7] via-[#f472b6] via-white via-[#f472b6] via-[#a855f7] to-[#38bdf8] bg-clip-text text-6xl font-black tracking-tighter text-transparent sm:text-8xl md:text-9xl leading-[1.1]">
             {t('hero.title')}
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300 sm:text-xl md:text-2xl px-4">
             {t('hero.subtitle')}
           </p>
-          <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-accent hover:shadow-[0_0_40px_-10px_rgba(244,114,182,0.5)] active:scale-95">
+          <button 
+            onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-accent hover:shadow-[0_0_40px_-10px_rgba(244,114,182,0.5)] active:scale-95"
+          >
             <span className="relative z-10">{t('hero.cta')}</span>
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
           </button>
@@ -47,7 +50,7 @@ export function HomeContent({ products }: { products: any[] }) {
       </section>
 
       {/* Product Grid */}
-      <section className="py-16 md:py-24">
+      <section id="products-section" className="py-16 md:py-24">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
           <div className="mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
             <div className="max-w-xl">

@@ -29,6 +29,14 @@ export function CheckoutForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const isMockMode = process.env.NEXT_PUBLIC_USE_MOCK_DATA === "true";
+
+    if (isMockMode) {
+        setSuccess(true);
+        refetch();
+        return;
+    }
+
     try {
       const billing = {
         firstName: formData.firstName,

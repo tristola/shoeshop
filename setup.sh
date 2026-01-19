@@ -11,7 +11,9 @@ docker compose exec --user root cli chown -R 33:33 /var/www/html
 # Check if WordPress is installed
 if ! docker compose exec --user 33 cli wp core is-installed; then
     echo "Installing WordPress..."
-    docker compose exec --user 33 cli wp core install --url=http://localhost:8080 --title="Shoe Shop Headless" --admin_user=admin --admin_password=password --admin_email=admin@example.com --skip-email
+    ADMIN_USER=${WP_ADMIN_USER:-admin}
+    ADMIN_PASS=${WP_ADMIN_PASSWORD:-password}
+    docker compose exec --user 33 cli wp core install --url=http://localhost:8080 --title="Shoe Shop Headless" --admin_user="$ADMIN_USER" --admin_password="$ADMIN_PASS" --admin_email=admin@example.com --skip-email
 
     echo "Configuring Permalinks..."
     docker compose exec --user 33 cli wp rewrite structure '/%postname%/'

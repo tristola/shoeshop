@@ -39,11 +39,14 @@ body {
 }
 
 @keyframes text-shine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0% { transform: scale(1.02); background-position: 0% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3)); }
+  50% { transform: scale(1.025); background-position: 100% 50%; filter: drop-shadow(0 0 20px rgba(244, 114, 182, 0.5)); }
+  100% { transform: scale(1.02); background-position: 200% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3)); }
 }
 
 .animate-text-shine {
-  background-size: 250% auto;
-  animation: text-shine 6s linear infinite;
+  display: inline-block;
+  background-size: 300% auto;
+  animation: text-shine 5s ease-in-out infinite;
+  transition: transform 0.3s ease;
 }

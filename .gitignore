@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+
+# Logs
+*.log
+frontend/dev.log
+frontend/server.log
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Node
+node_modules/
+
+# Docker
+.docker/
