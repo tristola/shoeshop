@@ -22,7 +22,7 @@ function makeClient() {
   };
 
   const httpLink = new HttpLink({
-    uri: "http://localhost:8080/index.php?graphql",
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL || "http://localhost:8080"}/index.php?graphql`,
     fetch: customFetch as any,
   });
 

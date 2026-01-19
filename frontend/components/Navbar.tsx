@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Navbar() {
   const { toggleCart, cart } = useCart();
@@ -14,8 +15,16 @@ export function Navbar() {
     <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-black/50 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         <div className="flex items-center gap-8">
-          <a href="/" className="text-xl font-bold tracking-tighter text-foreground">
-            SHOE<span className="text-primary">SHOP</span>
+          <a href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter text-foreground">
+            <Image 
+              src="/icon.png" 
+              alt="ShoeShop Logo" 
+              width={40} 
+              height={40} 
+              className="rounded-lg object-contain"
+              priority
+            />
+            <span>SHOE<span className="text-primary">SHOP</span></span>
           </a>
           <div className="hidden md:flex md:gap-6">
             <Link href="/posts" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">

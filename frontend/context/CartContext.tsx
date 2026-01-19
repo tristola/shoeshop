@@ -1,8 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-import { useMutation } from "@apollo/client/react";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_CART, ADD_TO_CART, REMOVE_FROM_CART } from "@/lib/queries";
 import { v4 as uuidv4 } from 'uuid';
 import { FALLBACK_IMAGES } from '@/lib/constants';
@@ -68,9 +67,14 @@ export function RealCartProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Queries & Mutations
-  const { data, refetch }: any = useSuspenseQuery(GET_CART, {
-    fetchPolicy: 'network-only' // Ensure we get fresh data
+  const { data, refetch, error }: any = useQuery(GET_CART, {
+    fetchPolicy: 'network-only',
+    ssr: false // Skip on server-side to avoid build issues with local WordPress
   });
+
+  if (error) {
+    console.error("Cart fetch failed", error);
+  }
   
   const [addToCartMutation] = useMutation(ADD_TO_CART);
   const [removeFromCartMutation] = useMutation(REMOVE_FROM_CART);

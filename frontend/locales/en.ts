@@ -55,6 +55,6 @@ export const en = {
   },
   nav: {
     cart: "Cart",
-    news: "Journal"
+    news: "Latest News"
   }
 };
