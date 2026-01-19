@@ -12,18 +12,24 @@ import { v4 as uuidv4 } from "uuid";
 import { ReactNode } from "react";
 
 function makeClient() {
+  const customFetch = async (uri: RequestInfo | URL, options: RequestInit) => {
+    const response = await fetch(uri, options);
+    const sessionToken = response.headers.get("woocommerce-session");
+    if (sessionToken && typeof window !== "undefined") {
+      localStorage.setItem("woo-session-v2", sessionToken);
+    }
+    return response;
+  };
+
   const httpLink = new HttpLink({
     uri: "http://localhost:8080/index.php?graphql",
+    fetch: customFetch as any,
   });
 
   const authLink = setContext((_, { headers }) => {
       let sessionToken = null;
       if (typeof window !== 'undefined') {
-         sessionToken = localStorage.getItem("woo-session-id");
-         if (!sessionToken) {
-           sessionToken = uuidv4();
-           localStorage.setItem("woo-session-id", sessionToken);
-         }
+         sessionToken = localStorage.getItem("woo-session-v2");
       }
       return {
           headers: {

@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export interface CartItem {
   id: string;
+  key?: string;
   title: string;
   price: string;
   imageSrc: string;
@@ -37,14 +38,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [removeFromCartMutation] = useMutation(REMOVE_FROM_CART);
 
   // Derived State
-  const cart: CartItem[] = data?.cart?.contents?.nodes.map((item: any) => ({
-    id: item.product.node.id, // Store Product ID (Global ID)
-    key: item.key, // Store Cart Key for removal
-    title: item.product.node.name,
-    price: item.product.node.price,
-    imageSrc: item.product.node.image?.sourceUrl || '',
-    quantity: item.quantity
-  })) || [];
+  // Derived State
+  const cart: CartItem[] = data?.cart?.contents?.nodes.map((item: any) => {
+    const FALLBACK_IMAGES: Record<string, string> = {
+      "Red Runners": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop",
+      "Blue Cruisers": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000&auto=format&fit=crop",
+      "Midnight Sprinters": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1000&auto=format&fit=crop",
+    };
+    
+    return {
+      id: item.product.node.id, // Store Product ID (Global ID)
+      key: item.key, // Store Cart Key for removal
+      title: item.product.node.name,
+      price: item.product.node.price,
+      imageSrc: item.product.node.image?.sourceUrl || FALLBACK_IMAGES[item.product.node.name] || "https://images.unsplash.com/photo-1562183241-b937e95585b6?q=80&w=1000&auto=format&fit=crop",
+      quantity: item.quantity
+    };
+  }) || [];
 
   // Parse total properly (remove currency symbols)
   const cartTotalVal = data?.cart?.total ? parseFloat(data.cart.total.replace(/[^0-9.]/g, "")) : 0;
