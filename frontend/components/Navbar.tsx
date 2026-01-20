@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import Link from "next/link";
 import Image from "next/image";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const { toggleCart, cart } = useCart();
@@ -12,7 +13,7 @@ export function Navbar() {
   const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-black/50 backdrop-blur-xl">
+    <nav className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-background/80 backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         <div className="flex items-center gap-8">
           <a href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter text-foreground">
@@ -34,6 +35,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <LanguageSwitcher />
           <button
             onClick={toggleCart}

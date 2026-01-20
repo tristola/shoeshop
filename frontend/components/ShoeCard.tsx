@@ -17,7 +17,7 @@ export function ShoeCard({ id, title, price, imageSrc, description }: ShoeCardPr
   const { t } = useLanguage();
 
   return (
-    <div className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/20">
+    <div className="group relative overflow-hidden rounded-3xl bg-card border border-border/10 shadow-lg dark:bg-white/5 dark:border-white/10 dark:shadow-none backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] hover:bg-card/90 dark:hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/20">
       <div className="relative aspect-square overflow-hidden">
         <Image
           src={imageSrc}
@@ -31,8 +31,8 @@ export function ShoeCard({ id, title, price, imageSrc, description }: ShoeCardPr
       <div className="p-6">
         <div className="mb-4 flex items-start justify-between">
           <div>
-            <h3 className="text-xl font-bold tracking-tight text-white">{title}</h3>
-            <p className="mt-1 text-sm text-gray-400 line-clamp-2">{description}</p>
+            <h3 className="text-xl font-bold tracking-tight text-foreground">{title}</h3>
+            <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{description}</p>
           </div>
           <p className="text-lg font-bold text-primary">{price}</p>
         </div>

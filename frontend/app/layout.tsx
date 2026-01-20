@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { CartSidebar } from "@/components/CartSidebar";
 import { ApolloWrapper } from "@/components/ApolloWrapper";
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -36,11 +38,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ApolloWrapper>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ApolloWrapper>
           <LanguageProvider>
             <CartProvider>
               <Navbar />
@@ -50,7 +53,8 @@ export default function RootLayout({
               </div>
             </CartProvider>
           </LanguageProvider>
-        </ApolloWrapper>
+          </ApolloWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
+  /* Light Mode (Default) */
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --primary: #0ea5e9;
+    --primary-foreground: #ffffff;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --accent: #ec4899;
+    --muted: #64748b;
+  }
+  
+  .dark {
+    /* Dark Mode */
   --background: #1e293b;
-    --foreground: #f8fafc;
+  --foreground: #f8fafc;
     --primary: #38bdf8;
     --primary-foreground: #0f172a;
     --card: #334155;
