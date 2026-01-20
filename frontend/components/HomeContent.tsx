@@ -19,7 +19,7 @@ export function HomeContent({ products }: { products: any[] }) {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex h-[40vh] min-h-[200px] items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden py-20">
         {/* ... (Hero Content) */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -40,7 +40,10 @@ export function HomeContent({ products }: { products: any[] }) {
             {t('hero.subtitle')}
           </p>
           <button 
-            onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              setActiveCategory('all');
+              document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary px-10 py-4 font-bold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-accent hover:shadow-[0_0_40px_-10px_rgba(244,114,182,0.5)] active:scale-95"
           >
             <span className="relative z-10">{t('hero.cta')}</span>

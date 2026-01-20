@@ -5,7 +5,7 @@ export const en = {
     cta: "Shop Collection"
   },
   products: {
-    title: "Latest Drops",
+    title: "All Products",
     subtitle: "Fresh styles for your daily run.",
     empty_title: "No Products Found",
     empty_desc: "Wait for the database to seed or check back later!",
@@ -17,7 +17,7 @@ export const en = {
       women: "Women"
     },
     titles: {
-      all: "Latest Drops",
+      all: "All Products",
       new: "New Arrivals",
       men: "Men's Collection",
       women: "Women's Collection"
