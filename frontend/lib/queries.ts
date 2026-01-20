@@ -27,7 +27,6 @@ export const GET_CART = gql`
         }
       }
       total
-      checkoutUrl
     }
   }
 `;
@@ -60,7 +59,6 @@ export const ADD_TO_CART = gql`
           }
         }
         total
-        checkoutUrl
       }
     }
   }
@@ -94,7 +92,6 @@ export const REMOVE_FROM_CART = gql`
           }
         }
         total
-        checkoutUrl
       }
     }
   }

@@ -33,7 +33,7 @@ export function HomeContent({ products }: { products: any[] }) {
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
-          <h1 className="animate-text-shine mb-4 bg-gradient-to-r from-[#38bdf8] via-[#a855f7] via-[#f472b6] via-white via-[#f472b6] via-[#a855f7] to-[#38bdf8] bg-clip-text text-6xl font-black tracking-tighter text-transparent sm:text-8xl md:text-9xl leading-[1.1]">
+          <h1 className="animate-text-shine mb-4 bg-gradient-to-r from-[#38bdf8] via-[#a855f7] via-[#f472b6] via-white via-[#f472b6] via-[#a855f7] to-[#38bdf8] bg-clip-text text-4xl sm:text-7xl md:text-9xl font-black tracking-tighter text-transparent leading-[1.1]">
             {t('hero.title')}
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300 sm:text-xl md:text-2xl px-4">
@@ -67,7 +67,7 @@ export function HomeContent({ products }: { products: any[] }) {
             </div>
             
             <div className="w-full md:w-auto">
-              <div className="flex w-full space-x-2 overflow-x-auto rounded-2xl bg-white/5 p-1.5 backdrop-blur-sm scrollbar-hide md:w-auto">
+              <div className="flex w-full flex-wrap gap-2 rounded-2xl bg-white/5 p-1.5 backdrop-blur-sm md:w-auto">
                 {[
                   { id: 'New Arrivals', label: t('products.categories.new') },
                   { id: 'Men', label: t('products.categories.men') },
@@ -77,7 +77,7 @@ export function HomeContent({ products }: { products: any[] }) {
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id as any)}
-                    className={`whitespace-nowrap rounded-xl px-6 py-3 text-sm font-bold transition-all min-h-[44px] flex items-center justify-center flex-1 md:flex-none ${
+                    className={`whitespace-nowrap rounded-xl px-6 py-3 text-sm font-bold transition-all min-h-[44px] flex items-center justify-center flex-none ${
                       activeCategory === category.id
                         ? "bg-primary text-primary-foreground shadow-2xl shadow-primary/20"
                         : "text-muted hover:bg-white/10 hover:text-foreground"

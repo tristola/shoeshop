@@ -38,6 +38,18 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
 @keyframes text-shine {
   0% { transform: scale(1.02); background-position: 0% 50%; filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3)); }
   50% { transform: scale(1.025); background-position: 100% 50%; filter: drop-shadow(0 0 20px rgba(244, 114, 182, 0.5)); }
